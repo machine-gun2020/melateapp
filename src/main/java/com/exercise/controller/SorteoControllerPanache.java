@@ -7,8 +7,11 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static io.quarkus.agroal.runtime.AgroalConnectionConfigurer.log;
@@ -17,7 +20,7 @@ import static io.quarkus.agroal.runtime.AgroalConnectionConfigurer.log;
 //@Produces(MediaType.APPLICATION_JSON)
 //@Consumes(MediaType.APPLICATION_JSON)
 public class SorteoControllerPanache {
-
+    private static final Logger log = LoggerFactory.getLogger(SorteoControllerPanache.class);
     @Inject
     SorteoService sorteoService;
 
@@ -84,5 +87,14 @@ public class SorteoControllerPanache {
     public Response estadisticas() {
         String stats = sorteoService.obtenerEstadisticas();
         return Response.ok("{\"message\": \"" + stats + "\"}").build();
+    }
+
+    @GET
+    @Path("/probabilidad")
+    public Map<Integer, Double> getProbabilidadSorteo() {
+        List<Sorteo> cuales = sorteoService.getAllSorteo();
+        log.info("Salida, probabilidad: {}", cuales.size());
+
+        return sorteoService.calcularProbabilidad(cuales,7);
     }
 }
