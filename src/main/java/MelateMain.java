@@ -10,6 +10,7 @@ public class MelateMain {
     private static final Logger log = LoggerFactory.getLogger(MelateMain.class);
     public static void main(String... args) {
         System.out.println("🚀 Iniciando Microservicio de Sorteos");
+        System.out.println("Pronostico");
         Quarkus.run(args);
     }
 }
