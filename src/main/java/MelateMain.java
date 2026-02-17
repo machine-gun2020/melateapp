@@ -11,6 +11,7 @@ public class MelateMain {
     public static void main(String... args) {
         System.out.println("🚀 Iniciando Microservicio de Sorteos");
         System.out.println("Pronostico");
+        System.out.println("Final");
         Quarkus.run(args);
     }
 }
