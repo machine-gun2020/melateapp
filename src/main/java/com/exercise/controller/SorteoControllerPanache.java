@@ -59,7 +59,7 @@ public class SorteoControllerPanache {
     // Consultar recientes
     @GET
     @Path("/recientes")
-    public Response obtenerRecientes(@QueryParam("limite") @DefaultValue("10") Integer limite) {
+    public Response obtenerRecientes(@QueryParam("limite") @DefaultValue("5") Integer limite) {
         List<Sorteo> sorteos = sorteoService.obtenerRecientes(limite);
         return Response.ok(sorteos).build();
     }
