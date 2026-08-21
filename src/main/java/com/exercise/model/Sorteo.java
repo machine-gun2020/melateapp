@@ -21,7 +21,7 @@ public class Sorteo {
     public Integer n6;
     private Integer comodin;
     public LocalDate fecha;
-    private Integer monto;
+    private Long monto;
 
     // Getters and Setters
     public Integer getId() {return id; }
@@ -76,10 +76,10 @@ public class Sorteo {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    public Integer getMonto() {
+    public Long getMonto() {
         return monto;
     }
-    public void setMonto(Integer monto) {
+    public void setMonto(Long monto) {
         this.monto = monto;
     }
 
